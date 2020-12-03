@@ -1,13 +1,13 @@
 const fs = require("fs");
 const { performance } = require("perf_hooks");
 
-const lineReader = async (path) => {
-  const array = await fs.readFileSync(path, "utf8").split("\n");
+const lineReader = (path) => {
+  const array = fs.readFileSync(path, "utf8").split("\n");
   return array;
 };
 
-const perf = async (path) => {
-  const input = await lineReader(path);
+const perf = (path) => {
+  const input = lineReader(path);
 
   return (func) => {
     const runTimeStart = performance.now();
@@ -19,8 +19,8 @@ const perf = async (path) => {
   };
 };
 
-module.exports.solve = async (path, first = null, second = null) => {
-  const run = await perf(path);
+module.exports.solve = (path, first = null, second = null) => {
+  const run = perf(path);
   first && run(first);
   second && run(second);
 };
