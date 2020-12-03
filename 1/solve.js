@@ -1,5 +1,6 @@
-const path = "./input.txt";
 const { solve } = require("../utils");
+
+const path = "./input.txt";
 
 const solvePartOneBruteForce = (input) => {
   loop: for (let i = 0; i < input.length; i++) {
