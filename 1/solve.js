@@ -29,3 +29,5 @@ const solvePartTwoBruteForce = (input) => {
 };
 
 solve(path, solvePartOneBruteForce, solvePartTwoBruteForce);
+// function parametes are optional, so you can as well run solve with only one function
+// solve(path, solvePartOneBruteForce);
