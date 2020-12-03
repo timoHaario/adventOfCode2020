@@ -1,13 +1,8 @@
 const fs = require("fs");
 const { performance } = require("perf_hooks");
 
-const lineReader = (path) => {
-  const array = fs.readFileSync(path, "utf8").split("\n");
-  return array;
-};
-
-const perf = (path) => {
-  const input = lineReader(path);
+const addInputToFunction = (path) => {
+  const input = fs.readFileSync(path, "utf8").split("\n");
 
   return (func) => {
     const runTimeStart = performance.now();
@@ -20,7 +15,7 @@ const perf = (path) => {
 };
 
 module.exports.solve = (path, first = null, second = null) => {
-  const run = perf(path);
-  first && run(first);
-  second && run(second);
+  const withPerformance = addInputToFunction(path);
+  first && withPerformance(first);
+  second && withPerformance(second);
 };
